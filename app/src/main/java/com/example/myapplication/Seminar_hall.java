@@ -15,7 +15,7 @@ public class Seminar_hall extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seminar_hall);
-        SHnxtbtn=(Button)findViewById(R.id.SHsnextButton);
+        SHnxtbtn=(Button)findViewById(R.id.SHnextButton);
         SHprevbtn=(Button)findViewById(R.id.SHprevbutton);
 
         SHprevbtn.setOnClickListener(new View.OnClickListener() {

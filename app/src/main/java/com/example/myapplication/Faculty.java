@@ -19,7 +19,7 @@ public class Faculty extends AppCompatActivity {
         Facultyprevbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent Facultyprev=new Intent(Faculty.this,MainActivity.class);
+                Intent Facultyprev=new Intent(Faculty.this,Seminar_hall.class);
                 startActivity(Facultyprev);
             }
         });
