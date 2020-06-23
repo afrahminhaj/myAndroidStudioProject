@@ -2,9 +2,11 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -15,6 +17,7 @@ import org.w3c.dom.Text;
 public class MainActivity extends AppCompatActivity {
     LinearLayout LabsLinearLayout;
     FloatingActionButton AddFAB;
+    Button Labsnextbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         LabsLinearLayout=(LinearLayout)findViewById(R.id.LabsLinearLayout);
         AddFAB=(FloatingActionButton)findViewById(R.id.AddFAB);
+        Labsnextbutton=(Button)findViewById(R.id.LabsnextButton) ;
+
+        Labsnextbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent labnext=new Intent(MainActivity.this,Seminar_hall.class);
+                startActivity(labnext);
+            }
+        });
 
 
 
