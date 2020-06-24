@@ -10,9 +10,11 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class Faculty extends AppCompatActivity {
     Button Facultyprevbutton;
-    Button Add2FAB;
+    FloatingActionButton Add2FAB;
     LinearLayout FacultyLinearLayout;
 
     @Override
@@ -20,7 +22,7 @@ public class Faculty extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_faculty);
         Facultyprevbutton=(Button)findViewById(R.id.Facultyprevbutton);
-        Add2FAB=(Button)findViewById(R.id.Add2FAB);
+        Add2FAB=(FloatingActionButton)findViewById(R.id.Add2FAB);
         FacultyLinearLayout=(LinearLayout)findViewById(R.id.FacultyLinearLayout) ;
 
         Facultyprevbutton.setOnClickListener(new View.OnClickListener() {
