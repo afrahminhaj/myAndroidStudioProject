@@ -34,7 +34,7 @@ public class Faculty extends AppCompatActivity {
         Add2FAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                add2("Faculty name","A/NA");
+                add2("Faculty name","AVAILABILITY");
             }
         });
 
