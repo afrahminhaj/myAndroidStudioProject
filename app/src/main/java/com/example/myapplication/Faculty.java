@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Space;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -36,23 +37,26 @@ public class Faculty extends AppCompatActivity {
         Add2FAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                add2("Faculty name","AVAILABILITY");
+                add2("Faculty name","Current hour");
             }
         });
 
     }
 
-    public void add2(String faculty_name, String av) {
+    public void add2(String faculty_name, String current_hour) {
+        Space space = new Space(this);
+        Space s2=new Space(this);
         LinearLayout eachfaculty=new LinearLayout(this);
-        eachfaculty.setBackgroundColor(Color.GRAY);
         TextView Fname=new TextView(this);
         TextView Av=new TextView(this);
         Fname.setText(faculty_name);
         Fname.setTextSize(20);
-        Av.setText(av);
+        Av.setText(current_hour);
         eachfaculty.addView(Fname);
+        eachfaculty.addView(space,100,10);
         eachfaculty.addView(Av);
         FacultyLinearLayout.addView(eachfaculty);
+        FacultyLinearLayout.addView(s2,10,50);
 
 
 

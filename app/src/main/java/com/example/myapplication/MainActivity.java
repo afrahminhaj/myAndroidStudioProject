@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Space;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                add("Lab","NA","NA","BOOK","BOOK","BOOK");
+                add("Lab_name","NA","NA","BOOK","BOOK","BOOK");
                 //LinearLayout eachlab=new LinearLayout(this);
                 //eachlab.setOrientation(LinearLayout.VERTICAL);
 
@@ -95,12 +96,18 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void add(String labname,String st1,String st2,String st3,String st4,String st5){
+        Space space2= new Space(this);
+        Space space3=new Space(this);
+        Space space4=new Space(this);
+        Space space5=new Space(this);
+        Space space6=new Space(this);
+        Space space7=new Space(this);
         LinearLayout eachlab= new LinearLayout(this);
         //eachlab.setBackgroundColor(Color.GRAY);
         LinearLayout.LayoutParams layoutParams=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMargins(0,30,0,0);
+        layoutParams.setMargins(0,0,0,37);
         TextView Labs=new TextView(this);
-        Labs.setTextSize(20);
+        Labs.setTextSize(15);
         Labs.setPadding(10,0,10,0);
         TextView hr1=new TextView(this);
         hr1.setBackground(getResources().getDrawable(R.drawable.redbtn));
@@ -118,27 +125,27 @@ public class MainActivity extends AppCompatActivity {
         hr3.setText(st3);
         hr4.setText(st4);
         hr5.setText(st5);
-        Labs.setPadding(30,5,30,8);
-        hr1.setPadding(30,5,30,8);
-        hr2.setPadding(30,5,30,8);
-        hr3.setPadding(30,5,30,8);
-        hr4.setPadding(30,5,30,8);
-        hr5.setPadding(30,5,30,8);
-        //Labs.setBackground(getResources().getDrawable(R.drawable.cutom_layout));
-        //Labs.setBackground(getResources().getDrawable(R.drawable.cutom_layout));
-        //hr1.setBackground(getResources().getDrawable(R.drawable.cutom_layout));
-        //hr2.setBackground(getResources().getDrawable(R.drawable.cutom_layout));
-        //hr3.setBackground(getResources().getDrawable(R.drawable.cutom_layout));
-        //hr4.setBackground(getResources().getDrawable(R.drawable.cutom_layout));
-        //hr5.setBackground(getResources().getDrawable(R.drawable.cutom_layout));
+        Labs.setPadding(10,5,10,8);
+        hr1.setPadding(25,5,25,8);
+        hr2.setPadding(25,5,25,8);
+        hr3.setPadding(25,5,25,8);
+        hr4.setPadding(25,5,25,8);
+        hr5.setPadding(25,5,25,8);
 
         eachlab.addView(Labs);
+        eachlab.addView(space2,11,2);
         eachlab.addView(hr1);
+        eachlab.addView(space3,11,2);
         eachlab.addView(hr2);
+        eachlab.addView(space4,11,2);
         eachlab.addView(hr3);
+        eachlab.addView(space5,11,2);
         eachlab.addView(hr4);
+        eachlab.addView(space6,11,2);
         eachlab.addView(hr5);
+
         LabsLinearLayout.addView(eachlab,layoutParams);
+        //LabsLinearLayout.addView(space7,10,50);
 
 
 

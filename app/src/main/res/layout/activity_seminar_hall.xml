@@ -23,16 +23,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.038" />
+
+
     <Button
         android:id="@+id/SHnextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next page..."
         android:background="@color/design_default_color_secondary_variant"
+        android:text="Next page..."
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976" />
@@ -46,12 +48,11 @@
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.146"
+        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976" />
-    
-    
+
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="410dp"
@@ -105,6 +106,7 @@
         android:enabled="false"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
+        android:clickable="true"
         android:text="Send request"
         android:textColor="@color/cardview_light_background"
         android:textStyle="bold"

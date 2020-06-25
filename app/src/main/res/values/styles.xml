@@ -1,5 +1,10 @@
 <resources>
     <!-- Base application theme. -->
+    <style name="fontcustom">
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">serif-monospace</item>
+    </style>
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>

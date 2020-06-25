@@ -23,13 +23,13 @@ public class Seminar_hall extends AppCompatActivity {
     private Spinner spinner;
     private EditText seminar;
     private EditText purpose;
-    private Button buttonConfirm;
+    Button buttonConfirm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seminar_hall);
-        
+
         seminar = (EditText) findViewById(R.id.Semname);
         purpose = (EditText) findViewById(R.id.purpose);
         buttonConfirm = (Button) findViewById(R.id.submit);
@@ -87,6 +87,14 @@ public class Seminar_hall extends AppCompatActivity {
 
         SHnxtbtn=(Button)findViewById(R.id.SHnextButton);
         SHprevbtn=(Button)findViewById(R.id.SHprevbutton);
+
+        buttonConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sendrequest=new Intent(Seminar_hall.this,Seminar_hallpg2.class);
+                startActivity(sendrequest);
+            }
+        });
 
         SHprevbtn.setOnClickListener(new View.OnClickListener() {
             @Override
