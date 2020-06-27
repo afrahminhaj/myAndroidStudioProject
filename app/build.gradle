@@ -1,10 +1,12 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
 
     defaultConfig {
+        vectorDrawables.useSupportLibrary=true
         applicationId "com.example.myapplication"
         minSdkVersion 16
         targetSdkVersion 30
