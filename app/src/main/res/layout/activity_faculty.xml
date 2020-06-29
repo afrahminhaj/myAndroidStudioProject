@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/cardview_light_background"
     android:layout_height="match_parent"
     tools:context=".Faculty">
 
@@ -13,8 +14,9 @@
         android:fontFamily="sans-serif-black"
         android:gravity="center_horizontal"
         android:text="FACULTY AVAILABILITY"
-        android:textSize="18dp"
+
         android:textColor="@color/cardview_dark_background"
+        android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,51 +24,114 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.038" />
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnv"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#4682b4"
+        android:foregroundGravity="center"
+        app:itemIconTint="@drawable/navcolor"
+        app:itemTextColor="@drawable/navcolor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/nav_menu" />
+
 
     <Button
-        android:id="@+id/Facultyprevbutton"
+        android:id="@+id/Fetch_detailsbtn"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/design_default_color_secondary_variant"
-        android:text="@string/prev_page"
+        android:background="@drawable/cutom_layout"
+        android:text="Fetch details"
+        android:textSize="12dp"
+        android:textColor="@color/cardview_light_background"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintVertical_bias="0.256" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/Add2FAB"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:clickable="true"
+    <TextView
+        android:id="@+id/detailsTV"
+        android:layout_width="130dp"
+        android:layout_height="25dp"
+        android:fontFamily="serif-monospace"
+        android:gravity="center_horizontal"
+        android:text="DETAILS"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.926"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:layout_constraintVertical_bias="0.396" />
 
-    <ScrollView
-        android:id="@+id/Facultyscrollview"
-        android:layout_width="361dp"
-        android:layout_height="549dp"
-        android:background="@android:color/holo_orange_light"
+    <EditText
+        android:id="@+id/Faculty_nameET"
+        android:layout_width="250dp"
+        android:layout_height="49dp"
+        android:background="@drawable/edittextstyle"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:hint="Enter Faculty name"
+        android:inputType="textPersonName"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.553"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.155" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="409dp"
+        android:layout_height="4dp"
+        android:background="?android:attr/listDivider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Heading3"
-        app:layout_constraintVertical_bias="0.412">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.334" />
 
-        <LinearLayout
-            android:id="@+id/FacultyLinearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+    <TextView
+        android:id="@+id/Detail1"
+
+        android:layout_width="170dp"
+        android:layout_height="33dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text=""
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.885"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.519" />
+
+    <TextView
+        android:id="@+id/Detail4"
+        android:layout_width="170dp"
+        android:layout_height="33dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="Faculty Current hour:"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.519" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

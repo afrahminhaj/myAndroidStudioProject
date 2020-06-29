@@ -1,11 +1,13 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Layout;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -14,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.Space;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.w3c.dom.Text;
@@ -21,7 +24,8 @@ import org.w3c.dom.Text;
 public class MainActivity extends AppCompatActivity {
     LinearLayout LabsLinearLayout;
     FloatingActionButton AddFAB;
-    Button Labsnextbutton;
+
+    BottomNavigationView bnv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,16 +33,32 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         LabsLinearLayout=(LinearLayout)findViewById(R.id.LabsLinearLayout);
         AddFAB=(FloatingActionButton)findViewById(R.id.AddFAB);
-        Labsnextbutton=(Button)findViewById(R.id.LabsnextButton) ;
-        firstrow();
 
-        Labsnextbutton.setOnClickListener(new View.OnClickListener() {
+        firstrow();
+        bnv=(BottomNavigationView)findViewById(R.id.bnv);
+        bnv.setSelectedItemId(R.id.LabsNav);
+
+        bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                Intent labnext=new Intent(MainActivity.this,Seminar_hall.class);
-                startActivity(labnext);
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.LabsNav:
+                        return true;
+                    case R.id.SemNav:
+                        startActivity(new Intent(getApplicationContext(),seminar_hall2.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.FacultyNav:
+                        startActivity(new Intent(getApplicationContext(),Faculty.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                }
+                return false;
             }
         });
+
+
 
 
 

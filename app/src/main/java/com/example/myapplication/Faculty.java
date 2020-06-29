@@ -1,64 +1,142 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Space;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.example.myapplication.loginpage.access_tkn;
+
 public class Faculty extends AppCompatActivity {
-    Button Facultyprevbutton;
-    FloatingActionButton Add2FAB;
-    LinearLayout FacultyLinearLayout;
+    Button Fetchdetailsbtn;
+    String facname;
+    RequestQueue queueA;
+    JsonObjectRequest DetailsRequest;
+    EditText facultyname;
+    TextView D1;
+    BottomNavigationView bnv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        queueA = Volley.newRequestQueue(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_faculty);
-        Facultyprevbutton=(Button)findViewById(R.id.Facultyprevbutton);
-        Add2FAB=(FloatingActionButton)findViewById(R.id.Add2FAB);
-        FacultyLinearLayout=(LinearLayout)findViewById(R.id.FacultyLinearLayout) ;
 
-        Facultyprevbutton.setOnClickListener(new View.OnClickListener() {
+        Fetchdetailsbtn = (Button) findViewById(R.id.Fetch_detailsbtn);
+        facultyname = (EditText) findViewById(R.id.Faculty_nameET);
+        D1 = (TextView) findViewById(R.id.Detail1);
+        bnv=(BottomNavigationView)findViewById(R.id.bnv);
+        bnv.setSelectedItemId(R.id.LabsNav);
+
+        bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                Intent Facultyprev=new Intent(Faculty.this,Seminar_hall.class);
-                startActivity(Facultyprev);
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.LabsNav:
+                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.SemNav:
+                        startActivity(new Intent(getApplicationContext(),seminar_hall2.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.FacultyNav:
+                        return true;
+
+                }
+                return false;
             }
         });
 
-        Add2FAB.setOnClickListener(new View.OnClickListener() {
+
+
+        Fetchdetailsbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                add2("Faculty name","Current hour");
+                Intent t=new Intent(Faculty.this,labs_booking.class);
+                startActivity(t);
+
+
+                /*String URL2 = "https://team2api.herokuapp.com/getroom?fac_name="+facname;
+                facname = facultyname.getText().toString();
+                JSONObject facdetails = new JSONObject();
+                try {
+                    facdetails.put("fac_name", facname);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                DetailsRequest = new JsonObjectRequest(Request.Method.GET,
+                        URL2,
+                        null,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                try {
+                                    String det1 = response.getString("current_hour");
+                                    D1.setText(det1);
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+
+                            }
+
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast toast = Toast.makeText(getApplicationContext(), "Enter Valid Faculty Name", Toast.LENGTH_LONG);
+                                toast.show();
+
+
+                            }
+                        }) {
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("Authorization", "Bearer " + access_tkn);
+                        return params;
+                    }
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("fac_name", facname);
+                        return params;
+                    }
+
+                };
+                queueA.add(DetailsRequest);*/
+
+
             }
         });
-
-    }
-
-    public void add2(String faculty_name, String current_hour) {
-        Space space = new Space(this);
-        Space s2=new Space(this);
-        LinearLayout eachfaculty=new LinearLayout(this);
-        TextView Fname=new TextView(this);
-        TextView Av=new TextView(this);
-        Fname.setText(faculty_name);
-        Fname.setTextSize(20);
-        Av.setText(current_hour);
-        eachfaculty.addView(Fname);
-        eachfaculty.addView(space,100,10);
-        eachfaculty.addView(Av);
-        FacultyLinearLayout.addView(eachfaculty);
-        FacultyLinearLayout.addView(s2,10,50);
-
-
-
     }
 }
