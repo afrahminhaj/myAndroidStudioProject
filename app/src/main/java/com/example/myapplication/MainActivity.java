@@ -11,58 +11,155 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Space;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.example.myapplication.loginpage.access_tkn;
+
 public class MainActivity extends AppCompatActivity {
-    LinearLayout LabsLinearLayout;
-    FloatingActionButton AddFAB;
+    //LinearLayout LabsLinearLayout;
+    //FloatingActionButton AddFAB;
 
     BottomNavigationView bnv;
+    EditText et2;
+    EditText et3;
+    EditText et4;
+    RequestQueue queuea;
+    JsonObjectRequest DetailsRequest;
+    Button buttonn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        queuea = Volley.newRequestQueue(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        LabsLinearLayout=(LinearLayout)findViewById(R.id.LabsLinearLayout);
-        AddFAB=(FloatingActionButton)findViewById(R.id.AddFAB);
+        et2 = (EditText) findViewById(R.id.et2);
+        et3 = (EditText) findViewById(R.id.et3);
+        et4 = (EditText) findViewById(R.id.et4);
+        buttonn = (Button) findViewById(R.id.buttonn);
 
-        firstrow();
-        bnv=(BottomNavigationView)findViewById(R.id.bnv);
+
+        //LabsLinearLayout=(LinearLayout)findViewById(R.id.LabsLinearLayout);
+        // AddFAB=(FloatingActionButton)findViewById(R.id.AddFAB);
+
+        // firstrow();
+        bnv = (BottomNavigationView) findViewById(R.id.bnv);
         bnv.setSelectedItemId(R.id.LabsNav);
 
         bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.LabsNav:
                         return true;
                     case R.id.SemNav:
-                        startActivity(new Intent(getApplicationContext(),seminar_hall2.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), seminar_hall2.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.FacultyNav:
-                        startActivity(new Intent(getApplicationContext(),Faculty.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), Faculty.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                 }
                 return false;
             }
         });
+        buttonn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String URL2 = "https://internship-team-2.herokuapp.com/lab";
+                final String user_idlab = et2.getText().toString();
+                final String room_idlab=et3.getText().toString();
+                final String purposelab=et4.getText().toString();
+                // final String club_name=et1.getText().toString();
+
+                JSONObject labdetails = new JSONObject();
+                try {
+                    // labdetails.put("club_name",club_name);
+                    labdetails.put("user_id", user_idlab);
+                    labdetails.put("room_id",room_idlab);
+                    labdetails.put("purpose",purposelab);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                DetailsRequest = new JsonObjectRequest(Request.Method.POST,
+                        URL2,
+                        labdetails,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                Toast toast = Toast.makeText(getApplicationContext(), "Request Sent!", Toast.LENGTH_LONG);
+                                toast.show();
+
+
+                            }
+
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast toast = Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG);
+                                toast.show();
+
+
+                            }
+                        }) {
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("Authorization", "Bearer " + access_tkn);
+                        return params;
+                    }
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String, String> params = new HashMap<>();
+                        //  params.put("club_name",club_name);
+                        params.put("user_id", user_idlab);
+                        params.put("room_id",room_idlab);
+                        params.put("purpose",purposelab);
+                        return params;
+                    }
+
+                };
+                queuea.add(DetailsRequest);
+
+
+
+            }
+        });
+    }
+}
 
 
 
 
 
-        AddFAB.setOnClickListener(new View.OnClickListener() {
+
+
+        /*AddFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -74,12 +171,11 @@ public class MainActivity extends AppCompatActivity {
 
 
             }
-        });
+        });*/
 
 
 
-    }
-    public void firstrow(){
+  /*  public void firstrow(){
         LinearLayout first_row=new LinearLayout(this);
         TextView col1=new TextView(this);
         TextView col2=new TextView(this);
@@ -171,6 +267,4 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    }
-
-}
+    }*/

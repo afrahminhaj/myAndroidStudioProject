@@ -67,6 +67,32 @@ public class seminar_hall2 extends AppCompatActivity {
         bnv=(BottomNavigationView)findViewById(R.id.bnv);
         bnv.setSelectedItemId(R.id.SemNav);
 
+        bnv=(BottomNavigationView)findViewById(R.id.bnv);
+        bnv.setSelectedItemId(R.id.LabsNav);
+
+        bnv=(BottomNavigationView)findViewById(R.id.bnv);
+        bnv.setSelectedItemId(R.id.LabsNav);
+
+        bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.LabsNav:
+                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.SemNav:
+
+                        return true;
+                    case R.id.FacultyNav:
+                        startActivity(new Intent(getApplicationContext(),Faculty.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                }
+                return false;
+            }
+        });
         buttonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,25 +159,6 @@ public class seminar_hall2 extends AppCompatActivity {
 
 
 
-        bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId()){
-                    case R.id.LabsNav:
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.SemNav:
-                        return true;
-                    case R.id.FacultyNav:
-                        startActivity(new Intent(getApplicationContext(),Faculty.class));
-                        overridePendingTransition(0,0);
-                        return true;
-
-                }
-                return false;
-            }
-        });
 
         List<String> clubs = new ArrayList<>();
         clubs.add(0,"CHOOSE THE CLUB");
