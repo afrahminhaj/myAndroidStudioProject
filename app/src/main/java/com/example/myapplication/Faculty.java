@@ -52,7 +52,6 @@ public class Faculty extends AppCompatActivity {
         setContentView(R.layout.activity_faculty);
         FLL=(LinearLayout)findViewById(R.id.facultylinearlayout);
 
-        Fetchdetailsbtn = (Button) findViewById(R.id.Fetch_detailsbtn);
 
         bnv=(BottomNavigationView)findViewById(R.id.bnv);
         bnv.setSelectedItemId(R.id.LabsNav);
@@ -76,6 +75,7 @@ public class Faculty extends AppCompatActivity {
                 return false;
             }
         });
+        firstrow();
         codeAPI();
 
 
@@ -83,7 +83,7 @@ public class Faculty extends AppCompatActivity {
 
 
 
-        Fetchdetailsbtn.setOnClickListener(new View.OnClickListener() {
+       /* Fetchdetailsbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -130,14 +130,14 @@ public class Faculty extends AppCompatActivity {
                         Map<String, String> params = new HashMap<>();
                         params.put("fac_name", facname);
                         return params;
-                    }*/
+                    }
 
                 };
                 queueC.add(FacultyDetailsRequest);
 
 
             }
-        });
+        });*/
     }
     public void codeAPI(){
 
@@ -188,27 +188,67 @@ public class Faculty extends AppCompatActivity {
         queueC.add(FacultyDetailsRequest);
 
     }
+
+    public void firstrow(){
+        Space space1= new Space(this);
+        Space space5= new Space(this);
+        Space space6=new Space(this);
+        Space space7=new Space(this);
+        LinearLayout row1= new LinearLayout(this);
+        TextView rc1=new TextView(this);
+        TextView rc2=new TextView(this);
+        TextView rc3=new TextView(this);
+        rc1.setText("FACULTY NAME");
+        rc2.setText("FACULTY ID");
+        rc3.setText("CURRENT HOUR");
+        rc1.setTextSize(15);
+        rc2.setTextSize(15);
+        rc3.setTextSize(15);
+
+        row1.addView(rc1);
+        row1.addView(space6,110,5);
+        row1.addView(rc2);
+        row1.addView(space7,80,5);
+        row1.addView(rc3);
+        FLL.addView(row1);
+        FLL.addView(space1,2,40);
+
+    }
     private void add(String facname,String facid,String crnt_hr) {
+        LinearLayout col1= new LinearLayout(this);
+        LinearLayout col2=new LinearLayout(this);
+        LinearLayout col3=new LinearLayout(this);
+        col1.setOrientation(LinearLayout.VERTICAL);
+        col2.setOrientation(LinearLayout.VERTICAL);
+        col3.setOrientation(LinearLayout.VERTICAL);
+        col1.setMinimumWidth(490);
+        col2.setMinimumWidth(280);
+        col3.setMinimumWidth(250);
+
         Space space2= new Space(this);
         Space space3=new Space(this);
         Space space4=new Space(this);
         Space space5=new Space(this);
         LinearLayout eachdetail= new LinearLayout(this);
+        eachdetail.addView(col1);
+        eachdetail.addView(col2);
+        eachdetail.addView(col3);
+
         TextView name=new TextView(this);
         TextView id=new TextView(this);
         TextView hour=new TextView(this);
         name.setText(facname);
         id.setText(facid);
         hour.setText(crnt_hr);
-        name.setTextSize(27);
-        id.setTextSize(27);
-        hour.setTextSize(27);
-        eachdetail.addView(name);
-        eachdetail.addView(space2,32,2);
-        eachdetail.addView(id);
-        eachdetail.addView(space3,32,2);
-        eachdetail.addView(hour);
-        eachdetail.addView(space4,32,2);
+        name.setTextSize(15);
+        id.setTextSize(15);
+        hour.setTextSize(15);
+        col1.addView(name);
+        col1.addView(space2,3,35);
+        col2.addView(id);
+        col2.addView(space3,3,35);
+        col3.addView(hour);
+        col3.addView(space4,3,35);
         FLL.addView(eachdetail);
         FLL.addView(space5,35,35);
 

@@ -27,32 +27,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="294dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/loginbtn"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/usernameET"
-        app:layout_constraintVertical_bias="0.185"
-        app:passwordToggleEnabled="true"
-        tools:ignore="MissingConstraints">
-
-
-        <EditText
-            android:id="@+id/passwordET"
-            android:layout_width="253dp"
-            android:layout_height="38dp"
-            android:background="@drawable/edittextstyle"
-            android:ems="10"
-            android:gravity="center"
-
-            android:inputType="textPersonName"
-            android:textColor="@color/design_default_color_on_secondary"
-            android:textStyle="bold" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/loginbtn"
@@ -64,10 +38,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.572"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.805" />
+        app:layout_constraintVertical_bias="0.8" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -92,16 +66,36 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.592"
         app:srcCompat="@drawable/ic_baseline_lock_24" />
-    
-     <ImageView
+
+    <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="156dp"
-        android:layout_height="168dp"
+        android:layout_width="410dp"
+        android:layout_height="186dp"
         app:layout_constraintBottom_toTopOf="@+id/usernameET"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.406"
         app:srcCompat="@drawable/logo" />
+
+    <EditText
+        android:id="@+id/passwordET"
+        android:layout_width="253dp"
+        android:layout_height="38dp"
+        android:background="@drawable/edittextstyle"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="PASSWORD"
+        android:inputType="textPassword"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.569"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.598" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
