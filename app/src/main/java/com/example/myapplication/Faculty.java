@@ -54,7 +54,7 @@ public class Faculty extends AppCompatActivity {
 
 
         bnv=(BottomNavigationView)findViewById(R.id.bnv);
-        bnv.setSelectedItemId(R.id.LabsNav);
+        bnv.setSelectedItemId(R.id.FacultyNav);
 
         bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

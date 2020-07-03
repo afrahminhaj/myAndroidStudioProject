@@ -71,7 +71,7 @@ public class seminar_hall2 extends AppCompatActivity {
         bnv.setSelectedItemId(R.id.LabsNav);
 
         bnv=(BottomNavigationView)findViewById(R.id.bnv);
-        bnv.setSelectedItemId(R.id.LabsNav);
+        bnv.setSelectedItemId(R.id.SemNav);
 
         bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
